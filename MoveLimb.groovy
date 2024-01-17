@@ -1,7 +1,13 @@
 import org.apache.commons.io.IOUtils;
 import  com.neuronrobotics.bowlerstudio.physics.*;
+import com.neuronrobotics.bowlerstudio.scripting.ScriptingEngine
 import com.neuronrobotics.bowlerstudio.threed.*;
-def base;
+import com.neuronrobotics.sdk.addons.kinematics.DHParameterKinematics
+import com.neuronrobotics.sdk.addons.kinematics.MobileBase
+import com.neuronrobotics.sdk.addons.kinematics.math.TransformNR
+import com.neuronrobotics.sdk.common.DeviceManager
+import com.neuronrobotics.sdk.util.ThreadUtil
+MobileBase base;
 //Check if the device already exists in the device Manager
 if(args==null){
 	base=DeviceManager.getSpecificDevice( "MediumKat",{ScriptingEngine.gitScriptRun(	"https://github.com/OperationSmallKat/SmallKat_V2.git", "loadRobot.groovy", [ "https://github.com/OperationSmallKat/greycat.git", "MediumKat.xml","GameController_22"] )})
