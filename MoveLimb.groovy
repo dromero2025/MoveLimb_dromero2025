@@ -10,13 +10,21 @@ import com.neuronrobotics.sdk.util.ThreadUtil
 MobileBase base;
 //Check if the device already exists in the device Manager
 if(args==null){
-	base=DeviceManager.getSpecificDevice( "MediumKat",{ScriptingEngine.gitScriptRun(	"https://github.com/OperationSmallKat/SmallKat_V2.git", "loadRobot.groovy", [ "https://github.com/OperationSmallKat/greycat.git", "MediumKat.xml","GameController_22"] )})
+	base=DeviceManager.getSpecificDevice( 
+		"GOOBY"
+		,{
+			MobileBase b= ScriptingEngine.gitScriptRun(	"https://github.com/dromero2025/GOOBY.git"
+			, "GOOBY.xml"
+			, null )
+			b.connect()
+			return b
+			})
 }else
 	base=args.get(0)
 
 
 println "Now we will move just one leg"
-DHParameterKinematics leg0 = base.getAllDHChains().get(1)
+DHParameterKinematics leg0 = base.getAllDHChains().get(0)
 double zLift=25
 println "Start from where the arm already is and move it from there with absolute location"
 TransformNR current = leg0.getCurrentPoseTarget();
